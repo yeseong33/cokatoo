@@ -1,7 +1,6 @@
 # cokatoo
 
-
-노션
+개발일지
 - https://grand-calcium-138.notion.site/1bc4e3d487d245d0a76e5ae7a901f3b7?pvs=74
 
 작업 상황 
