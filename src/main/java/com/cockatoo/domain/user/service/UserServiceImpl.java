@@ -47,7 +47,6 @@ public class UserServiceImpl implements UserService {
 
 
     public UpdateUserResponse updateUser(Long userId, UpdateUserRequest updateUserRequest) {
-//        userValidationService.checkUserById(userId);
         User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
         userMapper.updateUserFromDto(updateUserRequest, user);
         User updatedUser = userRepository.save(user);

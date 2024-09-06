@@ -1,8 +1,6 @@
 package com.cockatoo.domain.log.service;
 
-import com.cockatoo.domain.log.dto.CreateLogRequest;
-import com.cockatoo.domain.log.dto.CreateLogResponse;
-import com.cockatoo.domain.log.dto.ReadLogResponse;
+import com.cockatoo.domain.log.dto.*;
 import com.cockatoo.domain.log.entity.Log;
 import com.cockatoo.domain.log.exception.LogNotFoundException;
 import com.cockatoo.domain.log.mapper.LogMapper;
@@ -38,6 +36,16 @@ public class LogServiceImpl implements LogService {
         logValidationService.validateLogById(id);
         Log log = logRepository.findById(id).orElseThrow(LogNotFoundException::new);
         ReadLogResponse response = logMapperFacade.logToResponse(log, ReadLogResponse.class);
+        return response;
+    }
+
+    @Override
+    public UpdateLogResponse updateLog(Long logId, UpdateLogRequest request) {
+        logValidationService.validateLogById(logId);
+        Log log = logRepository.findById(logId).orElseThrow(LogNotFoundException::new);
+        logMapper.updateLogFromDTO(request, log);
+        Log updatedLog = logRepository.save(log);
+        UpdateLogResponse response = logMapperFacade.logToResponse(updatedLog, UpdateLogResponse.class);
         return response;
     }
 }

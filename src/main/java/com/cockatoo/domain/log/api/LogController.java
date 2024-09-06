@@ -1,8 +1,6 @@
 package com.cockatoo.domain.log.api;
 
-import com.cockatoo.domain.log.dto.CreateLogRequest;
-import com.cockatoo.domain.log.dto.CreateLogResponse;
-import com.cockatoo.domain.log.dto.ReadLogResponse;
+import com.cockatoo.domain.log.dto.*;
 import com.cockatoo.domain.log.service.LogService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +27,12 @@ public class LogController {
     ResponseEntity<ReadLogResponse> readLog(@PathVariable Long id) {
         ReadLogResponse response = logService.readLog(id);
         return ResponseEntity.status(HttpStatus.FOUND).body(response);
+    }
+
+    @PatchMapping("/{id}")
+    ResponseEntity<UpdateLogResponse> readLog(@PathVariable Long id, @Valid @RequestBody UpdateLogRequest request) {
+        UpdateLogResponse response = logService.updateLog(id, request);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
 }
