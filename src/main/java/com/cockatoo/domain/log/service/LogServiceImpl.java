@@ -5,9 +5,7 @@ import com.cockatoo.domain.log.entity.Log;
 import com.cockatoo.domain.log.exception.LogNotFoundException;
 import com.cockatoo.domain.log.mapper.LogMapper;
 import com.cockatoo.domain.log.repository.LogRepository;
-import com.cockatoo.domain.log.util.LogMapperFacade;
-import com.cockatoo.domain.log.util.LogServiceFacade;
-import com.cockatoo.domain.log.util.LogValidationServiceFacade;
+import com.cockatoo.domain.log.util.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +19,16 @@ public class LogServiceImpl implements LogService {
     private final LogServiceFacade logServiceFacade;
     private final LogValidationServiceFacade serviceValidationFacade;
     private final LogMapperFacade logMapperFacade;
+    private final LogRepositoryFacade logRepositoryFacade;
+    private final LogUtil logUtil;
 
     @Override
     public CreateLogResponse createLog(CreateLogRequest request) {
         serviceValidationFacade.validateLogWithDependencies(request);
-        Log log = logServiceFacade.createLogWithDependencies(request);
+        Log log = logMapper.createLogRequestToLog(request);
+        log = logRepositoryFacade.createLogWithDependencies(request, log);
         logRepository.save(log);
-        CreateLogResponse response = logMapperFacade.logToResponse(log, CreateLogResponse.class);
+        CreateLogResponse response = logMapper.logToCreateLogResponse(log);
         return response;
     }
 
@@ -35,7 +36,7 @@ public class LogServiceImpl implements LogService {
     public ReadLogResponse readLog(Long id) {
         logValidationService.validateLogById(id);
         Log log = logRepository.findById(id).orElseThrow(LogNotFoundException::new);
-        ReadLogResponse response = logMapperFacade.logToResponse(log, ReadLogResponse.class);
+        ReadLogResponse response = logMapper.logToReadLogResponse(log);
         return response;
     }
 
@@ -43,9 +44,9 @@ public class LogServiceImpl implements LogService {
     public UpdateLogResponse updateLog(Long logId, UpdateLogRequest request) {
         logValidationService.validateLogById(logId);
         Log log = logRepository.findById(logId).orElseThrow(LogNotFoundException::new);
-        logMapper.updateLogFromDTO(request, log);
-        Log updatedLog = logRepository.save(log);
-        UpdateLogResponse response = logMapperFacade.logToResponse(updatedLog, UpdateLogResponse.class);
+        Log upadtedLog = logUtil.updateDTOToLog(request, log);
+        logRepository.save(upadtedLog);
+        UpdateLogResponse response = logMapper.logToUpdateLogResponse(upadtedLog);
         return response;
     }
 

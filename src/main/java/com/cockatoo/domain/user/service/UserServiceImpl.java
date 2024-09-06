@@ -42,7 +42,8 @@ public class UserServiceImpl implements UserService {
         userValidationService.checkUserById(userId);
         final User user = userRepository.findById(userId)
                 .orElseThrow(UserNotFoundException::new);
-        return new ReadUserResponse(user);
+        ReadUserResponse response = userMapper.readUserResponse(user);
+        return response;
     }
 
 

@@ -1,15 +1,15 @@
 package com.cockatoo.domain.user.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class DeletedUserResponse {
     private Long userId;
+
+    @Builder
+    public DeletedUserResponse(Long userId) {
+        this.userId = userId;
+    }
 }

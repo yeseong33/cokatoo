@@ -10,9 +10,8 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
-@NoArgsConstructor
 @Table(name = "users")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends Base {
 
     @Id
@@ -37,5 +36,13 @@ public class User extends Base {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Log> logs;
+
+    @Builder
+    public User(String password, String name, String email, LocalDateTime withdrawAt) {
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.withdrawAt = withdrawAt;
+    }
 
 }

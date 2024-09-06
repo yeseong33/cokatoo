@@ -1,14 +1,18 @@
 package com.cockatoo.domain.log.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UpdateLogRequest {
     private float score;
     private String recordSound;
     private String link;
+
+    @Builder
+    public UpdateLogRequest(float score, String recordSound, String link) {
+        this.score = score;
+        this.recordSound = recordSound;
+        this.link = link;
+    }
 }

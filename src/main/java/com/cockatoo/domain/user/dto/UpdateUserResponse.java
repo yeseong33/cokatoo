@@ -2,15 +2,15 @@ package com.cockatoo.domain.user.dto;
 
 
 import com.cockatoo.domain.user.entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UpdateUserResponse {
     private User user;
+
+    @Builder
+    public UpdateUserResponse(User user) {
+        this.user = user;
+    }
 }

@@ -28,13 +28,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    // Lombok 의존성
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
 
     // MapStruct 의존성
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    // Lombok 의존성
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
     // Lombok과 MapStruct의 호환성을 위한 의존성
     implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
@@ -47,6 +47,7 @@ dependencies {
 
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2' // 최신 버전 확인 필요
     implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final' //
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
 
     // 테스트 의존성
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

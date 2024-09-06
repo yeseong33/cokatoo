@@ -17,6 +17,8 @@ public interface UserMapper {
 
     UserDTOImpl userDTO(User user);
 
+    ReadUserResponse readUserResponse(User user);
+
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     void updateUserFromDto(UpdateUserRequest updateUserRequest, @MappingTarget User user);

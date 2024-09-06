@@ -2,7 +2,6 @@ package com.cockatoo.domain.log.api;
 
 import com.cockatoo.domain.log.dto.*;
 import com.cockatoo.domain.log.service.LogService;
-import com.cockatoo.domain.user.dto.DeletedUserResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

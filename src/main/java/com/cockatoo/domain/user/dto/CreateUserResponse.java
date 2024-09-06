@@ -5,9 +5,12 @@ import lombok.*;
 import org.springframework.http.HttpStatus;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CreateUserResponse {
     private User user;
+
+    @Builder
+    public CreateUserResponse(User user) {
+        this.user = user;
+    }
 }

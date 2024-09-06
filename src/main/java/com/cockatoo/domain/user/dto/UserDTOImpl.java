@@ -1,17 +1,12 @@
 package com.cockatoo.domain.user.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserDTOImpl implements UserDTO {
     private Long userId;
     private String password;
@@ -20,4 +15,16 @@ public class UserDTOImpl implements UserDTO {
     private LocalDateTime startedAt;
     private LocalDateTime updatedAt;
     private LocalDateTime withdrawAt;
+
+    @Builder
+
+    public UserDTOImpl(Long userId, String password, String name, String email, LocalDateTime startedAt, LocalDateTime updatedAt, LocalDateTime withdrawAt) {
+        this.userId = userId;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.startedAt = startedAt;
+        this.updatedAt = updatedAt;
+        this.withdrawAt = withdrawAt;
+    }
 }

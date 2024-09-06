@@ -7,14 +7,11 @@ import com.cockatoo.domain.user.entity.User;
 import com.cockatoo.global.entity.Base;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
-@Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "Log")
 public class Log extends Base {
 
@@ -45,4 +42,14 @@ public class Log extends Base {
     @JoinColumn(name = "grade_id", updatable = false)
     private Grade grade;
 
+    @Builder
+    public Log(Long logId, float score, String recordSound, String link, User user, Sound sound, Grade grade) {
+        this.logId = logId;
+        this.score = score;
+        this.recordSound = recordSound;
+        this.link = link;
+        this.user = user;
+        this.sound = sound;
+        this.grade = grade;
+    }
 }

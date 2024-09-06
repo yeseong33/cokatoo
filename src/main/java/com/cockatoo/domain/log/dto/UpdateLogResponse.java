@@ -1,24 +1,34 @@
 package com.cockatoo.domain.log.dto;
 
-import com.cockatoo.domain.grade.dto.GradeDTO;
-import com.cockatoo.domain.sound.dto.SoundDTO;
-import com.cockatoo.domain.user.dto.UserDTO;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.cockatoo.domain.grade.dto.GradeDTOImpl;
+import com.cockatoo.domain.sound.dto.SoundDTOImpl;
+import com.cockatoo.domain.user.dto.UserDTOImpl;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UpdateLogResponse {
+    private Long logId;
     private float score;
     private String recordSound;
     private String link;
     private LocalDateTime updatedAt;
 
-    private UserDTO user;
-    private SoundDTO sound;
-    private GradeDTO grade;
+    private UserDTOImpl user;
+    private SoundDTOImpl sound;
+    private GradeDTOImpl grade;
+
+    @Builder
+    public UpdateLogResponse(Long logId, float score, String recordSound, String link, LocalDateTime updatedAt, UserDTOImpl user, SoundDTOImpl sound, GradeDTOImpl grade) {
+        this.logId = logId;
+        this.score = score;
+        this.recordSound = recordSound;
+        this.link = link;
+        this.updatedAt = updatedAt;
+        this.user = user;
+        this.sound = sound;
+        this.grade = grade;
+    }
 }
