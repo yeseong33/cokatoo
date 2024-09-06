@@ -13,7 +13,7 @@ public enum ErrorCode {
     CONFLICT(HttpStatus.CONFLICT, "E5", "이미 존재하는 값입니다."),
     INVALID_REQUIRED_FIELD(HttpStatus.BAD_REQUEST, "E6", "필수 입력값이 누락되었습니다."),
     UNRECOGNIZED_FLILD(HttpStatus.BAD_REQUEST, "E7", "필드 값이 아닌 입력이 있습니다."),
-
+    INVALID_FORMAT(HttpStatus.UNPROCESSABLE_ENTITY, "E7", "필드 값의 타입이 적절하지 않은 입력이 있습니다."),
 
     ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "A1", "존재하지 않는 아티클입니다."),
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "U1", "존재하지 않는 아이디입니다."),

@@ -1,6 +1,7 @@
 package com.cockatoo.global.error;
 
 import com.cockatoo.global.error.exception.BusinessBaseException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,8 @@ public class GlobalExceptionHandler {
         ErrorCode errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
         if (cause instanceof UnrecognizedPropertyException) {
             errorCode = ErrorCode.UNRECOGNIZED_FLILD;
+        } else if (cause instanceof InvalidFormatException) {
+            errorCode = ErrorCode.INVALID_FORMAT;
         }
         log.error("HttpMessageNotReadableException", e);
         return createErrorResponseEntity(errorCode);
@@ -45,7 +48,6 @@ public class GlobalExceptionHandler {
         log.error("ConstraintViolationException", e);
         return createErrorResponseEntity(ErrorCode.INVALID_REQUIRED_FIELD);
     }
-
 
 
     @ExceptionHandler(Exception.class)
