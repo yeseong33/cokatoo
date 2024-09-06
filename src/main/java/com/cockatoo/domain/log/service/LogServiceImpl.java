@@ -48,4 +48,11 @@ public class LogServiceImpl implements LogService {
         UpdateLogResponse response = logMapperFacade.logToResponse(updatedLog, UpdateLogResponse.class);
         return response;
     }
+
+    @Override
+    public DeletedLogResponse deleteLog(Long id) {
+        logValidationService.validateLogById(id);
+        logRepository.deleteById(id);
+        return new DeletedLogResponse(id);
+    }
 }

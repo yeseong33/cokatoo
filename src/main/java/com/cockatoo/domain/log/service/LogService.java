@@ -7,4 +7,5 @@ public interface LogService {
     CreateLogResponse createLog(CreateLogRequest request);
     ReadLogResponse readLog(Long id);
     UpdateLogResponse updateLog(Long id, UpdateLogRequest request);
+    DeletedLogResponse deleteLog(Long id);
 }
