@@ -3,11 +3,6 @@
 개발일지
 - https://grand-calcium-138.notion.site/1bc4e3d487d245d0a76e5ae7a901f3b7?pvs=74
 
-<<<<<<< HEAD
-작업 상황 
-=======
-작업 상황
->>>>>>> ab84602 (resolve: conflict)
 - 엔티티 별 crud 까지 개발 완료
 - 도메인형 디렉토리 구조 적용
 - 에러핸들링 적용
