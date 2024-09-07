@@ -6,6 +6,7 @@ import com.cockatoo.domain.user.exception.UserNotFoundException;
 import com.cockatoo.domain.user.mapper.UserMapper;
 import com.cockatoo.domain.user.repository.UserRepository;
 import com.cockatoo.domain.user.entity.User;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserValidationService userValidationService;
     private final UserMapper userMapper;
+    private final UserUtil userUtil;
 
 
     public CreateUserResponse createUser(CreateUserRequest createUserRequest) {
 
         userValidationService.validateUser(createUserRequest);
-
         final User user = userMapper.convertToUser(createUserRequest);
 
 //        User user = User.builder()
@@ -47,11 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    public UpdateUserResponse updateUser(Long userId, UpdateUserRequest updateUserRequest) {
+    @Override
+    @Transactional
+    public UpdateUserResponse updateUser(Long userId, UpdateUserRequest request) {
+        userValidationService.validateUser(request);
         User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
-        userMapper.updateUserFromDto(updateUserRequest, user);
-        User updatedUser = userRepository.save(user);
-        return new UpdateUserResponse(updatedUser);
+        user.update(request);
+        UpdateUserResponse response = userMapper.toUpdateUserResponse(user);
+        return response;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.cockatoo.domain.user.service;
 
 import com.cockatoo.domain.user.dto.CreateUserRequest;
+import com.cockatoo.domain.user.dto.UserDTO;
+import com.cockatoo.domain.user.dto.UserRequest;
 import com.cockatoo.domain.user.exception.EmailAlreadyExistsException;
 import com.cockatoo.domain.user.exception.UserNameAlreadyExistsException;
 import com.cockatoo.domain.user.exception.UserNotFoundException;
@@ -17,10 +19,9 @@ public class UserValidationService {
     private final UserRepository userRepository;
 
 
-    public void validateUser(CreateUserRequest createUserDTO) {
-        final String email = createUserDTO.getEmail();
-        final String name = createUserDTO.getName();
-
+    public void validateUser(UserDTO request) {
+        final String email = request.getEmail();
+        final String name = request.getName();
         checkEmail(email);
         checkName(name);
     }

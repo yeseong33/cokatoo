@@ -23,25 +23,27 @@ public class SoundServiceImpl implements SoundService {
     public CreateSoundResponse createSound(CreateSoundRequest createSoundRequest) {
         soundValidationService.validateSound(createSoundRequest);
         Sound sound = soundMapper.createDTOToSound(createSoundRequest);
-        System.out.println(sound.toString());
         soundRepository.save(sound);
-        return new CreateSoundResponse(sound);
+        CreateSoundResponse response = soundMapper.soundToCreateSoundResponse(sound);
+        return response;
     }
 
     @Override
     public ReadSoundResponse readSound(Long soundId) {
         soundValidationService.validateSoundId(soundId);
         Sound sound = soundRepository.findById(soundId).orElseThrow(SoundNotFoundException::new);
-        return new ReadSoundResponse(sound);
+        ReadSoundResponse response = soundMapper.soundToReadSoundResponse(sound);
+        return response;
     }
 
     @Override
     public UpdateSoundResponse updateSound(Long soundId, UpdateSoundRequest request) {
         soundValidationService.validateSoundId(soundId);
         Sound sound = soundRepository.findById(soundId).orElseThrow(SoundNotFoundException::new);
-        soundMapper.updateSoundToDto(request, sound);
-        soundRepository.save(sound);
-        return new UpdateSoundResponse(sound);
+        Sound updatedSound = soundMapper.updateDTOToSound(request, sound);
+        soundRepository.save(updatedSound);
+        UpdateSoundResponse response = soundMapper.soundToUpdateSoundResponse(sound);
+        return response;
     }
 
     @Override

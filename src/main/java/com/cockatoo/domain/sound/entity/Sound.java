@@ -11,9 +11,9 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
 @NoArgsConstructor
 @Table(name = "sound")
+@ToString
 public class Sound extends Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +40,14 @@ public class Sound extends Base {
     @OneToMany(mappedBy = "sound", fetch = FetchType.LAZY)
     private List<Log> logs;
 
+    @Builder
+    public Sound(Long soundId, String name, String path, String thumbnail, Integer like, String origin, List<Log> logs) {
+        this.soundId = soundId;
+        this.name = name;
+        this.path = path;
+        this.thumbnail = thumbnail;
+        this.like = like;
+        this.origin = origin;
+        this.logs = logs;
+    }
 }

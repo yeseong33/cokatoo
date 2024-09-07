@@ -32,6 +32,7 @@ public class GradeServiceImpl implements GradeService{
     public ReadGradeResponse readGrade(Long gradeId) {
         gradeValidationService.validateGradeById(gradeId);
         Grade grade = gradeRepository.findById(gradeId).orElseThrow(GradeNotFoundException::new);
-        return new ReadGradeResponse(grade);
+        ReadGradeResponse response = gradeMapper.toReadGradeResponse(grade);
+        return response;
     }
 }

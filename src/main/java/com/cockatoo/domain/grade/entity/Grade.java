@@ -3,16 +3,13 @@ package com.cockatoo.domain.grade.entity;
 import com.cockatoo.domain.log.entity.Log;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
-@Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "grade")
 public class Grade {
     @Id
@@ -28,4 +25,12 @@ public class Grade {
 
     @OneToMany(mappedBy = "grade", fetch = FetchType.LAZY)
     private List<Log> logs;
+
+    @Builder
+    public Grade(Long gradeId, String tier, String path, List<Log> logs) {
+        this.gradeId = gradeId;
+        this.tier = tier;
+        this.path = path;
+        this.logs = logs;
+    }
 }

@@ -1,12 +1,14 @@
 package com.cockatoo.domain.sound.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class DeleteSoundResponse {
     private Long id;
+
+    @Builder
+    public DeleteSoundResponse(Long id) {
+        this.id = id;
+    }
 }

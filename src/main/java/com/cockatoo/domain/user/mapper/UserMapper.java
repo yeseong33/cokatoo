@@ -2,6 +2,7 @@ package com.cockatoo.domain.user.mapper;
 
 import com.cockatoo.domain.grade.dto.GradeDTO;
 import com.cockatoo.domain.grade.entity.Grade;
+import com.cockatoo.domain.sound.dto.UpdateSoundResponse;
 import com.cockatoo.domain.user.dto.*;
 import com.cockatoo.domain.user.entity.User;
 import org.mapstruct.*;
@@ -19,9 +20,7 @@ public interface UserMapper {
 
     ReadUserResponse readUserResponse(User user);
 
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
-    void updateUserFromDto(UpdateUserRequest updateUserRequest, @MappingTarget User user);
+    UpdateUserResponse toUpdateUserResponse(User user);
 
     @Mapping(target = "userId", source = "userId")
     DeletedUserResponse deletedUserToDto(Long userId);

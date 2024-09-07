@@ -2,6 +2,7 @@ package com.cockatoo.domain.user.api;
 
 import com.cockatoo.domain.user.dto.*;
 import com.cockatoo.domain.user.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("")
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody CreateUserRequest createUserRequest) {
+    public ResponseEntity<CreateUserResponse> createUser(@Valid @RequestBody CreateUserRequest createUserRequest) {
         final CreateUserResponse createUserResponse = userService.createUser(createUserRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(createUserResponse);
     }
@@ -30,13 +31,13 @@ public class UserController {
     }
 
     @PatchMapping("/{userId}")
-    public ResponseEntity<UpdateUserResponse> updateUser(@PathVariable Long userId, @RequestBody UpdateUserRequest updateUserRequest) {
+    public ResponseEntity<UpdateUserResponse> updateUser(@PathVariable Long userId, @Valid @RequestBody UpdateUserRequest updateUserRequest) {
         final UpdateUserResponse updateUserResponse = userService.updateUser(userId, updateUserRequest);
         return ResponseEntity.status(HttpStatus.OK).body(updateUserResponse);
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<DeletedUserResponse> updateUser(@PathVariable Long userId) {
+    public ResponseEntity<DeletedUserResponse> deleteUser(@PathVariable Long userId) {
         final DeletedUserResponse deletedUserResponse = userService.deleteUser(userId);
         return ResponseEntity.status(HttpStatus.OK).body(deletedUserResponse);
     }

@@ -3,7 +3,11 @@ package com.cockatoo.domain.log.mapper;
 import com.cockatoo.domain.log.dto.*;
 import com.cockatoo.domain.log.entity.Log;
 
+import com.cockatoo.domain.user.entity.User;
 import org.mapstruct.*;
+
+import java.util.List;
+import java.util.Set;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface LogMapper {
@@ -28,8 +32,9 @@ public interface LogMapper {
     @Mapping(target = "grade", ignore = true)
     Log createLogRequestToLog(CreateLogRequest request);
 
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
-    void updateDTOToLog(UpdateLogRequest request, @MappingTarget Log log);
+    @Mapping(source = "sound", target = "sound")
+    @Mapping(source = "user", target = "user")
+    @Mapping(source = "grade", target = "grade")
+    LogDTOImpl logToDTO(Log log);
 
 }
