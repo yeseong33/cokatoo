@@ -4,7 +4,6 @@ import com.cockatoo.domain.grade.dto.CreateGradeRequest;
 import com.cockatoo.domain.grade.dto.CreateGradeResponse;
 import com.cockatoo.domain.grade.dto.ReadGradeResponse;
 import com.cockatoo.domain.grade.service.GradeService;
-import com.cockatoo.domain.sound.service.SoundService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

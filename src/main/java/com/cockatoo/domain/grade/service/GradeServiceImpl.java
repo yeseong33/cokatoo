@@ -7,8 +7,6 @@ import com.cockatoo.domain.grade.entity.Grade;
 import com.cockatoo.domain.grade.exception.GradeNotFoundException;
 import com.cockatoo.domain.grade.mapper.GradeMapper;
 import com.cockatoo.domain.grade.repository.GradeRepository;
-import com.cockatoo.domain.sound.mapper.SoundMapper;
-import com.cockatoo.domain.sound.repository.SoundRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

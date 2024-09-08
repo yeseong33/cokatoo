@@ -4,7 +4,6 @@ package com.cockatoo.domain.sound.api;
 import com.cockatoo.domain.sound.dto.*;
 import com.cockatoo.domain.sound.service.SoundService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

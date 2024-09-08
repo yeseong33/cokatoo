@@ -3,11 +3,7 @@ package com.cockatoo.domain.log.mapper;
 import com.cockatoo.domain.log.dto.*;
 import com.cockatoo.domain.log.entity.Log;
 
-import com.cockatoo.domain.user.entity.User;
 import org.mapstruct.*;
-
-import java.util.List;
-import java.util.Set;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface LogMapper {

@@ -1,7 +1,6 @@
 package com.cockatoo.domain.grade.dto;
 
 import com.cockatoo.domain.log.dto.LogDTOImpl;
-import com.cockatoo.domain.log.entity.Log;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

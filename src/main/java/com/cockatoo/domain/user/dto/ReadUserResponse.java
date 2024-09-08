@@ -1,6 +1,5 @@
 package com.cockatoo.domain.user.dto;
 
-import com.cockatoo.domain.user.entity.User;
 import lombok.*;
 
 import java.time.LocalDateTime;

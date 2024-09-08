@@ -3,7 +3,6 @@ package com.cockatoo.domain.sound.entity;
 
 import com.cockatoo.domain.log.entity.Log;
 import com.cockatoo.domain.sound.dto.UpdateSoundRequest;
-import com.cockatoo.domain.user.dto.UpdateUserRequest;
 import com.cockatoo.global.entity.Base;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

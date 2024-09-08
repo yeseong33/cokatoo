@@ -1,6 +1,5 @@
 package com.cockatoo.domain.sound.dto;
 
-import com.cockatoo.domain.sound.entity.Sound;
 import lombok.*;
 
 @Getter

@@ -1,7 +1,6 @@
 package com.cockatoo.domain.sound.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 @Getter

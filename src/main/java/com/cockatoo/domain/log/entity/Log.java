@@ -3,7 +3,6 @@ package com.cockatoo.domain.log.entity;
 
 import com.cockatoo.domain.grade.entity.Grade;
 import com.cockatoo.domain.log.dto.UpdateLogRequest;
-import com.cockatoo.domain.sound.dto.UpdateSoundRequest;
 import com.cockatoo.domain.sound.entity.Sound;
 import com.cockatoo.domain.user.entity.User;
 import com.cockatoo.global.entity.Base;

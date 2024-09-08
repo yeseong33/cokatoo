@@ -3,7 +3,6 @@ package com.cockatoo.domain.log.dto;
 import com.cockatoo.domain.grade.dto.GradeDTOImpl;
 import com.cockatoo.domain.sound.dto.SoundDTOImpl;
 import com.cockatoo.domain.user.dto.UserDTOImpl;
-import jdk.jshell.execution.LoaderDelegate;
 import lombok.*;
 
 import java.time.LocalDateTime;

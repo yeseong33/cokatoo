@@ -20,8 +20,8 @@ public class LogValidationServiceFacade {
     public void validateLogWithDependencies(CreateLogRequest request) {
 
         userValidationService.checkUserById(request.getUserId());
-//        soundValidationService.checkSoundById(request.getSoundId());
-//        gradeValidationService.checkGradeById(request.getGradeId());
+        soundValidationService.checkSoundById(request.getSoundId());
+        gradeValidationService.checkGradeById(request.getGradeId());
 
     }
 

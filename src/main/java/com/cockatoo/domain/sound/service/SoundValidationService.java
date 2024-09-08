@@ -1,6 +1,5 @@
 package com.cockatoo.domain.sound.service;
 
-import com.cockatoo.domain.sound.dto.CreateSoundRequest;
 import com.cockatoo.domain.sound.dto.SoundDTO;
 import com.cockatoo.domain.sound.exception.SoundNameAlreadyExistsException;
 import com.cockatoo.domain.sound.exception.SoundNotFoundException;

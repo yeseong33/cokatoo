@@ -1,12 +1,9 @@
 package com.cockatoo.domain.sound.dto;
 
 import com.cockatoo.domain.log.dto.LogDTOImpl;
-import com.cockatoo.domain.log.entity.Log;
-import com.cockatoo.domain.sound.entity.Sound;
 import lombok.*;
 
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

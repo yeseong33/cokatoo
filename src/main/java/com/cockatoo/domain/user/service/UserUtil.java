@@ -1,7 +1,5 @@
 package com.cockatoo.domain.user.service;
 
-import com.cockatoo.domain.log.dto.UpdateLogRequest;
-import com.cockatoo.domain.log.entity.Log;
 import com.cockatoo.domain.user.dto.UpdateUserRequest;
 import com.cockatoo.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;

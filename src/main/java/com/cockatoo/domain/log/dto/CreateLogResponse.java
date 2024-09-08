@@ -1,11 +1,7 @@
 package com.cockatoo.domain.log.dto;
 
-import com.cockatoo.domain.grade.dto.GradeDTO;
 import com.cockatoo.domain.grade.dto.GradeDTOImpl;
-import com.cockatoo.domain.sound.dto.SoundDTO;
 import com.cockatoo.domain.sound.dto.SoundDTOImpl;
-import com.cockatoo.domain.sound.entity.Sound;
-import com.cockatoo.domain.user.dto.UserDTO;
 import com.cockatoo.domain.user.dto.UserDTOImpl;
 import lombok.*;
 

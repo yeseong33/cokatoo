@@ -2,9 +2,6 @@ package com.cockatoo.domain.user.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
-
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ReadUserRequest {

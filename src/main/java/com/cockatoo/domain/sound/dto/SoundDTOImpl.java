@@ -1,6 +1,5 @@
 package com.cockatoo.domain.sound.dto;
 
-import com.cockatoo.domain.user.dto.UserDTO;
 import lombok.*;
 
 import java.time.LocalDateTime;
