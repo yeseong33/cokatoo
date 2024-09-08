@@ -8,6 +8,7 @@ import com.cockatoo.domain.sound.repository.SoundRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -37,12 +38,12 @@ public class SoundServiceImpl implements SoundService {
     }
 
     @Override
+    @Transactional
     public UpdateSoundResponse updateSound(Long soundId, UpdateSoundRequest request) {
-        soundValidationService.validateSoundId(soundId);
+        soundValidationService.validateSound(request);
         Sound sound = soundRepository.findById(soundId).orElseThrow(SoundNotFoundException::new);
-        Sound updatedSound = soundMapper.updateDTOToSound(request, sound);
-        soundRepository.save(updatedSound);
-        UpdateSoundResponse response = soundMapper.soundToUpdateSoundResponse(sound);
+        sound.update(request);
+        UpdateSoundResponse response = soundMapper.toUpdateSoundResponse(sound);
         return response;
     }
 

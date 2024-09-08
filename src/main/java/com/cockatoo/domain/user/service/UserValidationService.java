@@ -1,8 +1,6 @@
 package com.cockatoo.domain.user.service;
 
-import com.cockatoo.domain.user.dto.CreateUserRequest;
 import com.cockatoo.domain.user.dto.UserDTO;
-import com.cockatoo.domain.user.dto.UserRequest;
 import com.cockatoo.domain.user.exception.EmailAlreadyExistsException;
 import com.cockatoo.domain.user.exception.UserNameAlreadyExistsException;
 import com.cockatoo.domain.user.exception.UserNotFoundException;

@@ -10,8 +10,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
-        builder = @Builder(disableBuilder = false))
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserMapper {
 
     User convertToUser(CreateUserRequest createUserRequest);

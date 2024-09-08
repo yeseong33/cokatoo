@@ -6,10 +6,10 @@ import com.cockatoo.domain.user.exception.UserNotFoundException;
 import com.cockatoo.domain.user.mapper.UserMapper;
 import com.cockatoo.domain.user.repository.UserRepository;
 import com.cockatoo.domain.user.entity.User;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
@@ -26,14 +26,6 @@ public class UserServiceImpl implements UserService {
 
         userValidationService.validateUser(createUserRequest);
         final User user = userMapper.convertToUser(createUserRequest);
-
-//        User user = User.builder()
-//                .userId(createUserDTO.getUserId())
-//                .name(createUserDTO.getName())
-//                .email(createUserDTO.getEmail())
-//                .password(createUserDTO.getPassword())
-//                .withdrawAt(createUserDTO.getWithdrawAt())
-//                .build();
         userRepository.save(user);
         return new CreateUserResponse(user);
     }

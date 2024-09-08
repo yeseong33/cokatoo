@@ -1,6 +1,7 @@
 package com.cockatoo.domain.sound.service;
 
 import com.cockatoo.domain.sound.dto.CreateSoundRequest;
+import com.cockatoo.domain.sound.dto.SoundDTO;
 import com.cockatoo.domain.sound.exception.SoundNameAlreadyExistsException;
 import com.cockatoo.domain.sound.exception.SoundNotFoundException;
 import com.cockatoo.domain.sound.repository.SoundRepository;
@@ -15,8 +16,8 @@ public class SoundValidationService {
 
     private final SoundRepository soundRepository;
 
-    void validateSound(CreateSoundRequest createSoundRequest) {
-        boolean sound = soundRepository.existsByName(createSoundRequest.getName());
+    void validateSound(SoundDTO request) {
+        boolean sound = soundRepository.existsByName(request.getName());
         if (sound) {
             throw new SoundNameAlreadyExistsException();
         }

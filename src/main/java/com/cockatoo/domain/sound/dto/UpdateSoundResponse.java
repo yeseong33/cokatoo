@@ -15,15 +15,19 @@ public class UpdateSoundResponse {
     private String thumbnail;
     private Integer like;
     private String origin;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 
     @Builder
-    public UpdateSoundResponse(Long soundId, String name, String path, String thumbnail, Integer like, String origin) {
+    public UpdateSoundResponse(Long soundId, String name, String path, String thumbnail, Integer like, String origin, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.soundId = soundId;
         this.name = name;
         this.path = path;
         this.thumbnail = thumbnail;
         this.like = like;
         this.origin = origin;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 }
