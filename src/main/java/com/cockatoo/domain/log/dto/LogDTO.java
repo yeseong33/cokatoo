@@ -1,7 +1,7 @@
 package com.cockatoo.domain.log.dto;
 
 public interface LogDTO {
-    float getScore();
+    Float getScore();
     String getRecordSound();
     String getLink();
     Long getUserId();

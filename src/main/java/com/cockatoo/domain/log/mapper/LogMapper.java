@@ -25,7 +25,7 @@ public interface LogMapper {
     @Mapping(source = "user", target = "user")
     @Mapping(source = "sound", target = "sound")
     @Mapping(source = "grade", target = "grade")
-    UpdateLogResponse logToUpdateLogResponse(Log log);
+    UpdateLogResponse toUpdateLogResponse(Log log);
 
     @Mapping(target = "user", ignore = true)
     @Mapping(target = "sound", ignore = true)

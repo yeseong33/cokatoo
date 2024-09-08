@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateLogRequest implements LogDTO {
 
-    private float score;
+    private Float score;
     private String recordSound;
     private String link;
 

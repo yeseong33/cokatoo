@@ -8,6 +8,7 @@ import com.cockatoo.domain.log.repository.LogRepository;
 import com.cockatoo.domain.log.util.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,12 +42,14 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
+    @Transactional
     public UpdateLogResponse updateLog(Long logId, UpdateLogRequest request) {
         logValidationService.validateLogById(logId);
         Log log = logRepository.findById(logId).orElseThrow(LogNotFoundException::new);
-        Log upadtedLog = logUtil.updateDTOToLog(request, log);
-        logRepository.save(upadtedLog);
-        UpdateLogResponse response = logMapper.logToUpdateLogResponse(upadtedLog);
+        log.update(request);
+//        Log upadtedLog = logUtil.updateDTOToLog(request, log);
+//        logRepository.save(upadtedLog);
+        UpdateLogResponse response = logMapper.toUpdateLogResponse(log);
         return response;
     }
 

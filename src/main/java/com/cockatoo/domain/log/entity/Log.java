@@ -2,6 +2,8 @@ package com.cockatoo.domain.log.entity;
 
 
 import com.cockatoo.domain.grade.entity.Grade;
+import com.cockatoo.domain.log.dto.UpdateLogRequest;
+import com.cockatoo.domain.sound.dto.UpdateSoundRequest;
 import com.cockatoo.domain.sound.entity.Sound;
 import com.cockatoo.domain.user.entity.User;
 import com.cockatoo.global.entity.Base;
@@ -20,7 +22,7 @@ public class Log extends Base {
     private Long logId;
 
     @Column(name = "score")
-    private float score;
+    private Float score;
 
     @Column(name = "record_sound")
     private String recordSound;
@@ -52,4 +54,17 @@ public class Log extends Base {
         this.sound = sound;
         this.grade = grade;
     }
+
+    public void update(UpdateLogRequest request) {
+        if (request.getScore() != null) {  // score가 null이 아닌 경우에만 업데이트
+            this.score = request.getScore();
+        }
+        if (request.getRecordSound() != null) {
+            this.recordSound = request.getRecordSound();
+        }
+        if (request.getLink() != null) {
+            this.link = request.getLink();
+        }
+    }
+
 }

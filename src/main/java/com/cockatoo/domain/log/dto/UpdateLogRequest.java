@@ -5,7 +5,7 @@ import lombok.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UpdateLogRequest {
-    private float score;
+    private Float score;
     private String recordSound;
     private String link;
 

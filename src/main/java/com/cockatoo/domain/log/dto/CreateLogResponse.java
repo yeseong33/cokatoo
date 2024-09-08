@@ -14,7 +14,7 @@ import lombok.*;
 public class CreateLogResponse {
 
     private Long logId;
-    private float score;
+    private Float score;
     private String recordSound;
     private String link;
 

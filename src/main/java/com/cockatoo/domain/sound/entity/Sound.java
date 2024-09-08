@@ -70,6 +70,5 @@ public class Sound extends Base {
         if (request.getOrigin() != null) {
             this.origin = request.getOrigin();
         }
-
     }
 }
