@@ -8,6 +8,7 @@ import com.cockatoo.domain.user.repository.UserRepository;
 import com.cockatoo.domain.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,13 +22,21 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserUtil userUtil;
 
+    public CreateUserResponse createUser(CreateUserRequest request) {
 
-    public CreateUserResponse createUser(CreateUserRequest createUserRequest) {
+        userValidationService.validateUser(request);
 
-        userValidationService.validateUser(createUserRequest);
-        final User user = userMapper.convertToUser(createUserRequest);
+        User user = User.builder()
+//                .userId(createUserRequest.getUserId())
+                .name(request.getName())
+                .email(request.getEmail())
+                .withdrawAt(request.getWithdrawAt())
+                .password(userUtil.encodePassword(request.getPassword())) // Set encoded password
+                .build();
+
         userRepository.save(user);
-        return new CreateUserResponse(user);
+        CreateUserResponse response = userMapper.toCreateUserResponse(user);
+        return response;
     }
 
 

@@ -7,15 +7,15 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CreateUserRequest implements UserDTO {
-    private Long userId;
     private String name;
     private String email;
     private String password;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+    private LocalDateTime withdrawAt;
 
     @Builder
-    public CreateUserRequest(Long userId, String name, String email, String password, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime withdrawAt) {
-        this.userId = userId;
+    public CreateUserRequest(String name, String email, String password, LocalDateTime createdAt, LocalDateTime updatedAt, LocalDateTime withdrawAt) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -23,10 +23,4 @@ public class CreateUserRequest implements UserDTO {
         this.updatedAt = updatedAt;
         this.withdrawAt = withdrawAt;
     }
-
-    private LocalDateTime updatedAt;
-    private LocalDateTime withdrawAt;
-
-
-
 }
