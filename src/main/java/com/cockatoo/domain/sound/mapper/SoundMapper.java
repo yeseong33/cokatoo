@@ -1,9 +1,13 @@
 package com.cockatoo.domain.sound.mapper;
 
 
+import com.cockatoo.domain.log.dto.LogDTOImpl;
+import com.cockatoo.domain.log.entity.Log;
 import com.cockatoo.domain.sound.dto.*;
 import com.cockatoo.domain.sound.entity.Sound;
 import org.mapstruct.*;
+
+import java.util.List;
 
 
 @Mapper(componentModel = "spring",
@@ -18,4 +22,7 @@ public interface SoundMapper {
 
     Sound createDTOToSound(CreateSoundRequest createSoundRequest);
 
+    List<SoundDTOImpl> soundListTosoundDTOImplList(List<Sound> sounds);
+
+    SoundDTOImpl toSoundDTO(Sound sound);
 }

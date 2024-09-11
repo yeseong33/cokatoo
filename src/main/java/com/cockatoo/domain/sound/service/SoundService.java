@@ -8,4 +8,5 @@ public interface SoundService {
     ReadSoundResponse readSound(Long soundId);
     UpdateSoundResponse updateSound(Long soundId, UpdateSoundRequest request);
     DeleteSoundResponse deleteSound(Long soundId);
+    ReadAllSoundResponse readAllSound();
 }

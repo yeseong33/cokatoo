@@ -60,7 +60,10 @@ public class AuthenticationService {
                 .expired(false)
                 .revoked(false)
                 .build();
+        System.out.println("Saving Token: " + token);
         tokenRepository.save(token);
+        var savedToken = tokenRepository.findByToken(jwtToken);
+        System.out.println("Saved Token: " + savedToken);
     }
 
     // user 와 관련됨 모든 토큰을 만료 및 취소 -> 새로운 토큰 발급을 위해

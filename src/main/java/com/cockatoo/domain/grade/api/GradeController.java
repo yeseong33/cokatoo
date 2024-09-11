@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/grade")
+@RequestMapping("/api/v1/grade")
 @RequiredArgsConstructor
 public class GradeController {
 

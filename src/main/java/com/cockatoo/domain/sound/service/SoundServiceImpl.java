@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Service
 @Slf4j
@@ -52,5 +54,12 @@ public class SoundServiceImpl implements SoundService {
         soundValidationService.validateSoundId(soundId);
         soundRepository.deleteById(soundId);
         return new DeleteSoundResponse(soundId);
+    }
+
+    @Override
+    public ReadAllSoundResponse readAllSound() {
+        List<Sound> sounds = soundRepository.findAll();
+        List<SoundDTOImpl> response =  soundMapper.soundListTosoundDTOImplList(sounds);
+        return new ReadAllSoundResponse(response);
     }
 }

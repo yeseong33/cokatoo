@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/log")
+@RequestMapping("/api/v1/log")
 @RequiredArgsConstructor
 public class LogController {
 

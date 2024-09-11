@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping("/api/sound")
+@RequestMapping("/api/v1/sound")
 @RequiredArgsConstructor
 public class SoundController {
 
@@ -27,7 +27,7 @@ public class SoundController {
     @GetMapping("/{soundId}")
     ResponseEntity<ReadSoundResponse> readSound(@Valid @PathVariable Long soundId) {
         ReadSoundResponse response = soundService.readSound(soundId);
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PatchMapping("/{soundId}")
@@ -39,6 +39,12 @@ public class SoundController {
     @DeleteMapping("/{soundId}")
     ResponseEntity<DeleteSoundResponse> deleteSound(@Valid @PathVariable Long soundId) {
         DeleteSoundResponse response = soundService.deleteSound(soundId);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @GetMapping("")
+    ResponseEntity<ReadAllSoundResponse> readSound() {
+        ReadAllSoundResponse response = soundService.readAllSound();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
