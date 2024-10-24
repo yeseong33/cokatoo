@@ -1,8 +1,6 @@
 package com.cockatoo.domain.sound.mapper;
 
 
-import com.cockatoo.domain.log.dto.LogDTOImpl;
-import com.cockatoo.domain.log.entity.Log;
 import com.cockatoo.domain.sound.dto.*;
 import com.cockatoo.domain.sound.entity.Sound;
 import org.mapstruct.*;

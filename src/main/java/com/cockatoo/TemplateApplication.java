@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-public class CockatooApplication {
+public class TemplateApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CockatooApplication.class, args);
+        SpringApplication.run(TemplateApplication.class, args);
     }
 
 }

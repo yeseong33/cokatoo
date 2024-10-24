@@ -1,6 +1,5 @@
 package com.cockatoo.domain.user.entity;
 
-import com.cockatoo.domain.log.entity.Log;
 import com.cockatoo.domain.user.dto.UpdateUserRequest;
 import com.cockatoo.global.entity.Base;
 import jakarta.persistence.*;
