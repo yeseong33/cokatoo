@@ -7,10 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @Slf4j
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
@@ -27,7 +26,7 @@ public class UserController {
     @GetMapping("/{userId}")
     public ResponseEntity<ReadUserResponse> readUser(@PathVariable Long userId) {
         final ReadUserResponse readUserResponse = userService.readUser(userId);
-        return ResponseEntity.status(HttpStatus.FOUND).body(readUserResponse);
+        return ResponseEntity.status(HttpStatus.OK).body(readUserResponse);
     }
 
     @PatchMapping("/{userId}")

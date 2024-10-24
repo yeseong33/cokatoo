@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UpdateUserResponse updateUser(Long userId, UpdateUserRequest request) {
-        userValidationService.validateUser(request);
+//        userValidationService.validateUser(request);
         User user = userRepository.findById(userId).orElseThrow(UserNotFoundException::new);
         user.update(request);
         UpdateUserResponse response = userMapper.toUpdateUserResponse(user);

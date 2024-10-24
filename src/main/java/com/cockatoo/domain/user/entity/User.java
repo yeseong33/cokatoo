@@ -5,6 +5,7 @@ import com.cockatoo.domain.user.dto.UpdateUserRequest;
 import com.cockatoo.global.entity.Base;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -40,18 +41,17 @@ public class User extends Base implements UserDetails {
     @Column(name = "date_withdraw", nullable = true)
     private LocalDateTime withdrawAt;
 
+    @Null
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Log> logs;
 
     @Builder
-
-    public User(Long userId, String password, String name, String email, LocalDateTime withdrawAt, List<Log> logs) {
+    public User(Long userId, String password, String name, String email, LocalDateTime withdrawAt) {
         this.userId = userId;
         this.password = password;
         this.name = name;
         this.email = email;
         this.withdrawAt = withdrawAt;
-        this.logs = logs;
     }
 
     public void update(UpdateUserRequest request) {

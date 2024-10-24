@@ -28,10 +28,6 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_URL = {
-//            "/api/user", // 배포시 삭제
-//            "/api/v1/sound",
-//            "/api/v1/user/**",
-//            "/api/auth/**",
             "/api/v1/**",
             "/api/v1/auth/**",
             "/v2/api-docs",
@@ -64,7 +60,6 @@ public class SecurityConfiguration {
                                 .anyRequest()
                                 .authenticated()
                 )
-
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

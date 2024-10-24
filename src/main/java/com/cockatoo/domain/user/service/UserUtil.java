@@ -23,7 +23,6 @@ public class UserUtil {
                 .name(request.getName() != null ? request.getName() : user.getName())
                 .email(request.getEmail() != null ? request.getEmail() : user.getEmail())
                 .withdrawAt(request.getWithdrawAt() != null ? request.getWithdrawAt() : user.getWithdrawAt())
-                .logs(user.getLogs())
                 .build();
     }
 
