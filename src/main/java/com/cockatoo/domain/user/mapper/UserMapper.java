@@ -25,5 +25,7 @@ public interface UserMapper {
     @Mapping(target = "userId", source = "userId")
     DeletedUserResponse deletedUserToDto(Long userId);
 
+    ReadUserByJwtResponse readUserByJwtResponse(User user);
+
 
 }

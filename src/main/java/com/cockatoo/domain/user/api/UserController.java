@@ -40,4 +40,11 @@ public class UserController {
         final DeletedUserResponse deletedUserResponse = userService.deleteUser(userId);
         return ResponseEntity.status(HttpStatus.OK).body(deletedUserResponse);
     }
+
+    @GetMapping("")
+    public ResponseEntity<ReadUserByJwtResponse> readUserByJwt(@RequestHeader("Authorization") String jwt) {
+        final ReadUserByJwtResponse response = userService.readUserByJwt(jwt);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+
+    }
 }

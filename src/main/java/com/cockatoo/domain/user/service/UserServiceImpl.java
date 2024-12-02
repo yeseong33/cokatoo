@@ -1,6 +1,7 @@
 package com.cockatoo.domain.user.service;
 
 
+import com.cockatoo.domain.jwt.service.JwtService;
 import com.cockatoo.domain.user.dto.*;
 import com.cockatoo.domain.user.exception.UserNotFoundException;
 import com.cockatoo.domain.user.mapper.UserMapper;
@@ -19,6 +20,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserValidationService userValidationService;
+    private final JwtService jwtService;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
 
@@ -64,6 +66,18 @@ public class UserServiceImpl implements UserService {
         userValidationService.checkUserById(userId);
         userRepository.deleteById(userId);
         return userMapper.deletedUserToDto(userId);
+    }
+
+    @Override
+    public ReadUserByJwtResponse readUserByJwt(String jwt) {
+        String userEmail = jwtService.extractUsername(jwt);
+        User user = findByEmail(userEmail);
+        return userMapper.readUserByJwtResponse(user);
+    }
+
+    private User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(UserNotFoundException::new);
     }
 
 }

@@ -46,8 +46,4 @@ public class UserValidationService {
             throw new UserNotFoundException();
         }
     }
-
-
-
-
 }
