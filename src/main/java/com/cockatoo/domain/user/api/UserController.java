@@ -1,5 +1,6 @@
 package com.cockatoo.domain.user.api;
 
+import com.cockatoo.domain.jwt.service.JwtService;
 import com.cockatoo.domain.user.dto.*;
 import com.cockatoo.domain.user.service.UserService;
 import jakarta.validation.Valid;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
+    private final JwtService jwtService;
 
     @PostMapping("")
     public ResponseEntity<CreateUserResponse> createUser(@Valid @RequestBody CreateUserRequest createUserRequest) {
@@ -43,8 +45,8 @@ public class UserController {
 
     @GetMapping("")
     public ResponseEntity<ReadUserByJwtResponse> readUserByJwt(@RequestHeader("Authorization") String jwt) {
-        final ReadUserByJwtResponse response = userService.readUserByJwt(jwt);
+        final String userEmail = jwtService.extractUsername(jwt);
+        final ReadUserByJwtResponse response = userService.readUserByJwt(userEmail);
         return ResponseEntity.status(HttpStatus.OK).body(response);
-
     }
 }

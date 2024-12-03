@@ -8,5 +8,5 @@ public interface UserService {
     ReadUserResponse readUser(Long userId);
     UpdateUserResponse updateUser(Long userId, UpdateUserRequest updateUserRequest);
     DeletedUserResponse deleteUser(Long userId);
-    ReadUserByJwtResponse readUserByJwt(String jwt);
+    ReadUserByJwtResponse readUserByJwt(String userEmail);
 }

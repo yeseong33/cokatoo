@@ -20,7 +20,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserValidationService userValidationService;
-    private final JwtService jwtService;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
 
@@ -69,8 +68,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ReadUserByJwtResponse readUserByJwt(String jwt) {
-        String userEmail = jwtService.extractUsername(jwt);
+    public ReadUserByJwtResponse readUserByJwt(String userEmail) {
         User user = findByEmail(userEmail);
         return userMapper.readUserByJwtResponse(user);
     }
