@@ -9,5 +9,5 @@ public interface GradeService {
 
     CreateGradeResponse createGrade(CreateGradeRequest request);
     ReadGradeResponse readGrade(Long gradeId);
-    EvaluateGradeResponse evaluateGrade(Long score);
+    EvaluateGradeResponse evaluateGrade(Double score);
 }

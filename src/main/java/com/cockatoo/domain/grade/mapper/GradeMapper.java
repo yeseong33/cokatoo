@@ -15,7 +15,7 @@ public interface GradeMapper {
 
     Grade createDTOToGrade(CreateGradeRequest request);
     ReadGradeResponse toReadGradeResponse(Grade grade);
-    @Mapping(source = "grade", target = "gradeDTOImpl")
+    @Mapping(source = "grade", target = "grade")
     EvaluateGradeResponse toEvaluateGradeResponse(Grade grade);
     GradeDTOImpl gradeDTO(Grade grade);
 

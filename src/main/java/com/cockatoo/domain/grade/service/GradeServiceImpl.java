@@ -37,7 +37,7 @@ public class GradeServiceImpl implements GradeService{
     }
 
     @Override
-    public EvaluateGradeResponse evaluateGrade(Long score) {
+    public EvaluateGradeResponse evaluateGrade(Double score) {
         long gradeId = getGradeIdByScore(score);
         Grade grade = findGradeById(gradeId);
         return gradeMapper.toEvaluateGradeResponse(grade);
@@ -48,7 +48,7 @@ public class GradeServiceImpl implements GradeService{
                 .orElseThrow(GradeNotFoundException::new);
     }
 
-    private long getGradeIdByScore(Long score) {
+    private long getGradeIdByScore(Double score) {
         if (score < 0 || score > 100) {
             throw new GradeIllegalArgumentException();
         }

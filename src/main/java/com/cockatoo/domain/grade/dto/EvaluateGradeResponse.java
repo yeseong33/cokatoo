@@ -7,5 +7,5 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class EvaluateGradeResponse {
-    private final GradeDTOImpl gradeDTOImpl;
+    private final GradeDTOImpl grade;
 }

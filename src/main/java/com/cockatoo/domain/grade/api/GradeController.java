@@ -34,7 +34,7 @@ public class GradeController {
     }
 
     @GetMapping("/evaluate")
-    ResponseEntity<EvaluateGradeResponse> evaluateGrade(@PathParam("score") Long score) {
+    ResponseEntity<EvaluateGradeResponse> evaluateGrade(@PathParam("score") Double score) {
         EvaluateGradeResponse response = gradeService.evaluateGrade(score);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
