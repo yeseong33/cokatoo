@@ -30,8 +30,7 @@ public class SoundValidationService {
     }
 
     public void checkSoundById(Long soundId) {
-        if (soundRepository.existsBySoundId(soundId)) {
-            throw new SoundNotFoundException();
-        }
+        if (soundRepository.existsBySoundId(soundId)) return;
+        throw new SoundNotFoundException();
     }
 }

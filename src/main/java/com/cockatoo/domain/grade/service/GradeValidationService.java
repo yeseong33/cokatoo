@@ -29,9 +29,7 @@ public class GradeValidationService {
     }
 
     public void checkGradeById(Long gradeId) {
-        boolean grade = gradeRepository.existsByGradeId(gradeId);
-        if (grade) {
-            throw new GradeNotFoundException();
-        }
+        if (gradeRepository.existsByGradeId(gradeId)) return;
+        throw new GradeNotFoundException();
     }
 }
