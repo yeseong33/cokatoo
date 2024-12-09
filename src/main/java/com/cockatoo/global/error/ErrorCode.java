@@ -28,6 +28,8 @@ public enum ErrorCode {
 
     GRADE_NOT_FOUND(HttpStatus.NOT_FOUND, "G1", "존재하지 않는 등급입니다."),
     GRADE_TIER_CONFLICT(HttpStatus.CONFLICT, "G2", "이미 존재하는 등급입니다."),
+    GRADE_INVALID_INPUT_VALUE(HttpStatus.BAD_REQUEST, "G3", "올바르지 않은 점수 입력값입니다."),
+
 
     LOG_NOT_FOUND(HttpStatus.NOT_FOUND, "L1", "존재하지 않는 기록입니다.");
 
