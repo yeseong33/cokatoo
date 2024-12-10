@@ -38,8 +38,8 @@ public class GradeServiceImpl implements GradeService{
 
     @Override
     public EvaluateGradeResponse evaluateGrade(Double score) {
-        long gradeId = getGradeIdByScore(score);
-        Grade grade = findGradeById(gradeId);
+        String tier = getTierByScore(score);
+        Grade grade = findGradeByTier(tier);
         return gradeMapper.toEvaluateGradeResponse(grade);
     }
 
@@ -48,10 +48,15 @@ public class GradeServiceImpl implements GradeService{
                 .orElseThrow(GradeNotFoundException::new);
     }
 
-    private long getGradeIdByScore(Double score) {
+    private Grade findGradeByTier(String tier) {
+        return gradeRepository.findByTier(tier)
+                .orElseThrow(GradeNotFoundException::new);
+    }
+
+    private String getTierByScore(Double score) {
         if (score < 0 || score > 100) {
             throw new GradeIllegalArgumentException();
         }
-        return 3 - Math.min((int)(score / 40), 2); // 0-39: 3, 40-79: 2, 80-100: 1
+        return String.valueOf(3 - Math.min((int)(score / 40), 2));
     }
 }
