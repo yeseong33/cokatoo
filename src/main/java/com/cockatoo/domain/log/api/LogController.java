@@ -30,7 +30,7 @@ public class LogController {
     }
 
     @PatchMapping("/{id}")
-    ResponseEntity<UpdateLogResponse> readLog(@PathVariable Long id, @Valid @RequestBody UpdateLogRequest request) {
+    ResponseEntity<UpdateLogResponse> updateLog(@PathVariable Long id, @Valid @RequestBody UpdateLogRequest request) {
         UpdateLogResponse response = logService.updateLog(id, request);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
@@ -42,7 +42,7 @@ public class LogController {
     }
 
     @GetMapping("")
-    ResponseEntity<ReadAllLogResponse> readLog() {
+    ResponseEntity<ReadAllLogResponse> readAllLog() {
         ReadAllLogResponse response = logService.readAllLog();
         return ResponseEntity.status(HttpStatus.FOUND).body(response);
     }
