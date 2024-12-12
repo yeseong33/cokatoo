@@ -8,4 +8,5 @@ public interface LogService {
     ReadLogResponse readLog(Long id);
     UpdateLogResponse updateLog(Long id, UpdateLogRequest request);
     DeletedLogResponse deleteLog(Long id);
+    ReadAllLogResponse readAllLog();
 }

@@ -41,4 +41,10 @@ public class LogController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    @GetMapping("")
+    ResponseEntity<ReadAllLogResponse> readLog() {
+        ReadAllLogResponse response = logService.readAllLog();
+        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+    }
+
 }

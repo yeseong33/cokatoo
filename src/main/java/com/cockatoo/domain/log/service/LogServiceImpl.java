@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LogServiceImpl implements LogService {
@@ -58,5 +60,12 @@ public class LogServiceImpl implements LogService {
         logValidationService.validateLogById(id);
         logRepository.deleteById(id);
         return new DeletedLogResponse(id);
+    }
+
+    @Override
+    public ReadAllLogResponse readAllLog() {
+        List<Log> logs = logRepository.findAll();
+        List<LogDTOImpl> response = logMapper.logsToLogDTOImpls(logs);
+        return new ReadAllLogResponse(response);
     }
 }

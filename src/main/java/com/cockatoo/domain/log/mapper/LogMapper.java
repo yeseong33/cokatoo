@@ -3,7 +3,11 @@ package com.cockatoo.domain.log.mapper;
 import com.cockatoo.domain.log.dto.*;
 import com.cockatoo.domain.log.entity.Log;
 
+import com.cockatoo.domain.sound.dto.SoundDTOImpl;
+import com.cockatoo.domain.sound.entity.Sound;
 import org.mapstruct.*;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE, nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface LogMapper {
@@ -33,4 +37,5 @@ public interface LogMapper {
     @Mapping(source = "grade", target = "grade")
     LogDTOImpl logToDTO(Log log);
 
+    List<LogDTOImpl> logsToLogDTOImpls(List<Log> logs);
 }
