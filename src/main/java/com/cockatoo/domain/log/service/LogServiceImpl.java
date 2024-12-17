@@ -6,11 +6,17 @@ import com.cockatoo.domain.log.exception.LogNotFoundException;
 import com.cockatoo.domain.log.mapper.LogMapper;
 import com.cockatoo.domain.log.repository.LogRepository;
 import com.cockatoo.domain.log.util.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +30,9 @@ public class LogServiceImpl implements LogService {
     private final LogMapperFacade logMapperFacade;
     private final LogRepositoryFacade logRepositoryFacade;
     private final LogUtil logUtil;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public CreateLogResponse createLog(CreateLogRequest request) {
@@ -62,10 +71,21 @@ public class LogServiceImpl implements LogService {
         return new DeletedLogResponse(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public ReadAllLogResponse readAllLog() {
-        List<Log> logs = logRepository.findAll();
-        List<LogDTOImpl> response = logMapper.logsToLogDTOImpls(logs);
-        return new ReadAllLogResponse(response);
+    public void readAllScore(HttpServletResponse response) throws IOException {
+        response.setContentType(MediaType.APPLICATION_NDJSON_VALUE);
+        writeScore(response);
+    }
+
+    private void writeScore(HttpServletResponse response) throws IOException {
+        try (Stream<Log> scoreStream = logRepository.streamAll();
+             PrintWriter writer = response.getWriter()) {
+            scoreStream.forEach(log -> {
+                writer.println("{\"score\": " + log.getScore() + "}");
+                writer.flush();
+                entityManager.detach(log);
+            });
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.cockatoo.domain.performance;
+package com.cockatoo.global.performance;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,8 +10,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class PerformanceMonitoringAspect {
 
-    // Pointcut 정의 (서비스 계층의 모든 메서드에 적용)
-    @Pointcut("execution(* com.cockatoo.domain.log.api.*.*(..)) || execution(* com.cockatoo.domain.log.service.*.*(..))")
+    // API 계층의 Pointcut 정의
+    @Pointcut("execution(* com.cockatoo.domain.log.api.*.*(..))")
+    public void apiLayerMethods() {}
+
+    // Service 계층의 Pointcut 정의
+    @Pointcut("execution(* com.cockatoo.domain.log.service.*.*(..))")
+    public void serviceLayerMethods() {}
+
+    // API 및 Service 계층의 Pointcut 결합
+    @Pointcut("apiLayerMethods() || serviceLayerMethods()")
     public void controllerAndServiceMethods() {}
 
     // 성능 측정 Advice

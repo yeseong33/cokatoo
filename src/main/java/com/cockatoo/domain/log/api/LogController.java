@@ -2,12 +2,15 @@ package com.cockatoo.domain.log.api;
 
 import com.cockatoo.domain.log.dto.*;
 import com.cockatoo.domain.log.service.LogService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
 @Slf4j
@@ -41,10 +44,9 @@ public class LogController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @GetMapping("")
-    ResponseEntity<ReadAllLogResponse> readAllLog() {
-        ReadAllLogResponse response = logService.readAllLog();
-        return ResponseEntity.status(HttpStatus.FOUND).body(response);
+    @GetMapping("/scores")
+    void readAllScore(HttpServletResponse response) throws IOException {
+        logService.readAllScore(response);
     }
 
 }
